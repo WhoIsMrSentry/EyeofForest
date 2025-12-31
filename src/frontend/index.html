@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="tr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>EyeofForest Live</title>
+    <link rel="stylesheet" href="/static/styles.fixed.css" />
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="brand">
+            <div class="logo">🌲</div>
+            <div class="title">EyeofForest</div>
+        </div>
+        <button id="nav-toggle" class="nav-toggle" aria-label="Menüyü aç">☰</button>
+        <div id="nav-container" class="nav-container">
+            <ul class="nav-links">
+                <li><a href="#home" id="nav-home">Ana Sayfa</a></li>
+                <li class="has-sub">
+                    <a href="#live" id="nav-live">Canlı ▾</a>
+                    <ul class="dropdown">
+                        <li><a href="#live" id="nav-live-sub">Canlı İzle</a></li>
+                        <li><a href="#recordings" id="nav-recordings">Kayıtlar</a></li>
+                    </ul>
+                </li>
+                <li class="has-sub">
+                    <a href="#settings" id="nav-settings">Ayarlar ▾</a>
+                    <ul class="dropdown">
+                        <li><a href="#settings" id="nav-settings-sub">Genel</a></li>
+                        <li><a href="#advanced" id="nav-advanced">Gelişmiş</a></li>
+                    </ul>
+                </li>
+                <li><a href="#about" id="nav-about">Hakkında</a></li>
+            </ul>
+        </div>
+        <div class="top-controls">
+            <div class="status" id="status">Disconnected</div>
+            <div class="fps" id="fps">FPS: 0</div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="controls card">
+            <div class="row">
+                <label for="url">Stream URL</label>
+                <input id="url" type="text" placeholder="rtsp://... or http://... (leave empty for local camera)" />
+            </div>
+            <div class="row actions">
+                <button id="start" class="btn primary">Start Stream</button>
+                <button id="stop" class="btn">Stop</button>
+                <button id="snap" class="btn">Snapshot</button>
+                <button id="fullscreen" class="btn">Fullscreen</button>
+                <label class="small"><input id="autoreconnect" type="checkbox" /> Auto-reconnect</label>
+                <label class="small">Zoom <input id="zoom" type="range" min="0.5" max="2" step="0.1"
+                    value="1" /></label>
+            </div>
+            <div class="row note">Tip: leave URL empty to use local webcam (index 0).</div>
+        </section>
+
+        <section class="viewer">
+            <div class="video-wrap card">
+                <div class="video-frame">
+                    <div id="loader" class="loader hidden"></div>
+                    <img id="video" alt="Live stream" />
+                    <div id="overlay" class="overlay"></div>
+                </div>
+            </div>
+            <aside class="sidebar card">
+                <h3>Activity Log</h3>
+                <ul id="log"></ul>
+            </aside>
+        </section>
+    </main>
+
+    <!-- Additional SPA-like sections -->
+    <section id="recordings" class="page-section card" aria-hidden="true">
+        <h2>Kayıtlar</h2>
+        <p>Burada çekilmiş kayıtlar listelenecek (placeholder).</p>
+        <ul id="recordings-list">
+            <li>Henüz kayıt yok.</li>
+        </ul>
+    </section>
+
+    <section id="settings" class="page-section card" aria-hidden="true">
+        <h2>Ayarlar</h2>
+        <p>Genel ayarlar buraya gelecek.</p>
+        <div class="row"><label>Detaylı Ayar:</label><input type="text" placeholder="Örnek ayar"/></div>
+    </section>
+
+    <section id="advanced" class="page-section card" aria-hidden="true">
+        <h2>Gelişmiş</h2>
+        <p>Gelişmiş seçenekler ve debug araçları.</p>
+    </section>
+
+    <section id="about" class="page-section card" aria-hidden="true">
+        <h2>Hakkında</h2>
+        <p>EyeofForest — canlı yangın/duman tespiti arayüzü.</p>
+        <p>Versiyon: dev</p>
+    </section>
+
+    <script src="/static/app.js"></script>
+</body>
+
+</html>
